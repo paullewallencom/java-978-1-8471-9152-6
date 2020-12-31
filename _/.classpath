@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="commons-logging.jar"/>
+	<classpathentry kind="lib" path="oscore-2.2.5.jar"/>
+	<classpathentry kind="lib" path="osworkflow-2.8.0.jar"/>
+	<classpathentry kind="lib" path="propertyset-1.4.jar"/>
+	<classpathentry kind="lib" path="bsh-1.2b7.jar"/>
+	<classpathentry kind="lib" path="osuser-1.0-dev-2Feb05.jar"/>
+	<classpathentry kind="lib" path="ejb.jar"/>
+	<classpathentry kind="lib" path="spring.jar"/>
+	<classpathentry kind="lib" path="hibernate3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/hsqldb.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/jta.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/commons-collections.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="drools-compiler-3.0.4.jar"/>
+	<classpathentry kind="lib" path="drools-core-3.0.4.jar"/>
+	<classpathentry kind="lib" path="drools-decisiontables-3.0.4.jar"/>
+	<classpathentry kind="lib" path="drools-jsr94-3.0.4.jar"/>
+	<classpathentry kind="lib" path="commons-jci-core-1.0-406301.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/commons-jci-eclipse-3.2.0.666.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/core-3.2.0.666.jar"/>
+	<classpathentry kind="lib" path="antlr-3.0ea8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/stringtemplate-2.3b6.jar"/>
+	<classpathentry kind="lib" path="quartz-1.5.2.jar"/>
+	<classpathentry kind="lib" path="mail.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/esper-1.7.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/jcommon-1.0.9.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/jfreechart-1.0.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry kind="lib" path="C:/jboss-4.0.2/server/osde/lib/javax.servlet.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

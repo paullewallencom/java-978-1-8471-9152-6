@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.6//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+	<initial-actions>
+		<action id="100" name="Start Workflow">
+			<results>
+				<unconditional-result old-status="Finished"
+					status="Customer handles form" step="1" />
+			</results>
+		</action>
+	</initial-actions>
+	<steps>
+		<step id="1" name="Risk index calculation">
+			<actions>
+				<action id="1" name="Calculate" >
+					<results>
+					<result old-status="Calculation FinishedA" status="Approved" step="2">
+						<conditions type="OR">
+							<condition type="beanshell">
+								<arg name="script">
+									<![CDATA[
+									packtpub.osw.LoanRequest lr = (packtpub.osw.LoanRequest)transientVars.get("loanRequest");
+									System.out.println("Amount:" + lr.getAmount());
+					 				float riskA = 0.0f;
+					 				float riskB = 0.0f;
+					 				float riskC = 0.0f;
+					 				if(lr.getAnnualEarnings() > lr.getAmount()){
+					 					riskA = 0.0f;
+					 				}else if(lr.getAnnualEarnings() >= (lr.getAmount()/2)){
+					 					riskA = 0.5f;
+					 				} else {
+					 				    riskA = 1.0f;
+					 				}
+					 				
+					 				if(lr.hasCreditHistory()){
+						 				if(lr.getPreviousCreditPaid()){
+											riskB = 0.0;
+										}else{
+											riskB = 0.5;
+										}
+										if(lr.isPreviousLegalSituation()){
+												riskB = 1.0;
+										}
+					 				}
+					 				if(!lr.isMarried()){
+					 					riskC = 0.5f;
+					 				}
+					 				System.out.println("riskA" + riskA);
+					 					System.out.println("riskB" + riskB);
+					 						System.out.println("riskC" + riskC);
+					 				float finalRisk = ((riskA + riskB + riskC)/3);
+					 				System.out.println("finalRisk:" + finalRisk);
+					 				if(finalRisk < 0.4f){
+					 				System.out.println("approved");	
+					 					return true;
+					 				}
+					 				return false;
+					 				]]>
+								</arg>
+							</condition>
+						</conditions>
+						</result>
+						<unconditional-result old-status="Calculation FinishedD"
+							step="2" status="Denyied" />
+					</results>
+				</action>
+			</actions>
+		</step>
+		<step id="2" name="Risk index calculation done" >
+		</step>
+	</steps>
+</workflow>

@@ -1,0 +1,11 @@
+<workflows>
+    <workflow name="example" type="resource" location="example.xml"/>
+    <workflow name="holiday" type="resource" location="holiday.xml"/>
+    <workflow name="holiday2" type="resource" location="holiday2.xml"/>
+    <workflow name="loan" type="resource" location="loan.xml"/>
+    <workflow name="loan-drools" type="resource" location="loan-drools.xml"/>
+    <workflow name="loan-quartz" type="resource" location="loan-quartz.xml"/>
+    <workflow name="auto" type="resource" location="auto.xml"/>
+    <workflow name="cep" type="resource" location="cep.xml"/>
+    <workflow name="cep-example1" type="resource" location="cep-example1.xml"/>
+</workflows>

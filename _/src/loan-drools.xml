@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.6//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+	<initial-actions>
+		<action id="100" name="Start Workflow">
+			<results>
+				<unconditional-result old-status="Finished"
+					status="Customer handles form" step="1" />
+			</results>
+		</action>
+	</initial-actions>
+	<steps>
+		<step id="1" name="Risk index calculation">
+			<actions>
+				<action id="1" name="Calculate" >
+					<results>
+					<result old-status="Calculation FinishedA" status="Approved" step="2">
+						<conditions type="OR">
+							<condition type="class">
+								<arg name="class.name">packtpub.osw.RuleCondition</arg>
+								<arg name="ruleName">/loan.drl</arg>
+							</condition>
+						</conditions>
+						</result>
+						<unconditional-result old-status="Calculation FinishedD"
+							step="2" status="Denyied" />
+					</results>
+				</action>
+			</actions>
+		</step>
+		<step id="2" name="Risk index calculation done" >
+		</step>
+	</steps>
+</workflow>

@@ -1,0 +1,35 @@
+package LoanRequestRules; 
+rule "Calculate"
+    when
+        lr: packtpub.osw.LoanRequest();
+        result: packtpub.osw.RuleConditionalResult();
+    then
+        System.out.println( "loan" + lr);  
+        System.out.println("Amount:" + lr.getAmount());
+					 				double riskA = 0.0;
+					 				double riskB = 0.0;
+					 				double riskC = 0.0;
+					 				if(lr.getAnnualEarnings() > lr.getAmount()){
+					 					riskA = 0.0;
+					 				}else if(lr.getAnnualEarnings() >= (lr.getAmount()/2)){
+					 					riskA = 0.5;
+					 				} else {
+					 				    riskA = 1.0;
+					 				}
+					 				
+					 				if(lr.hasCreditHistory()){
+					 				}
+					 				if(!lr.isMarried()){
+					 					riskC = 0.5;
+					 				}
+					 				System.out.println("riskA" + riskA);
+					 					System.out.println("riskB" + riskB);
+					 						System.out.println("riskC" + riskC);
+					 				double finalRisk = ((riskA + riskB + riskC)/3);
+					 				System.out.println("finalRisk:" + finalRisk);
+					 				if(finalRisk < 0.4){
+					 				System.out.println("approved");	
+					 				result.setResult(true);
+					 				}
+					 				  
+end

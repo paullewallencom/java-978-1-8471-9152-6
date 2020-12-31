@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.6//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+	<initial-actions>
+		<action id="100" name="Start Workflow">
+			<results>
+				<unconditional-result old-status="Finished" status="Underway" step="1"/>
+			</results>
+		</action>
+	</initial-actions>
+	<steps>
+		<step id="1" name="Employee request">
+			<actions>
+				<action id="1" name="Request holidays">
+					<results>
+						<unconditional-result old-status="Finished" step="2" status="Requested"/>
+					</results>
+				</action>
+			</actions>
+		</step>
+		<step id="2" name="Manager revision">
+			<actions>
+				<action id="2" name="Approve" finish="TRUE">
+					<results>
+						<unconditional-result old-status="Revised" status="Approved" />
+					</results>
+				</action>
+				<action id="3" name="Deny" finish="TRUE">
+					<results>
+						<unconditional-result old-status="Revised" status="Denied" />
+					</results>
+				</action>
+			</actions>
+		</step>
+	</steps>
+</workflow>

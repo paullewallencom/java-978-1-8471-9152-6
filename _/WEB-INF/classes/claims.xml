@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.6//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+	<initial-actions>
+		<action id="100" name="Start Workflow">
+			<results>
+				<unconditional-result old-status="Finished"
+					status="Pending" step="1" />
+			</results>
+		</action>
+	</initial-actions>
+	<steps>
+		<step id="1" name="Get unpaid and create contact">
+			<actions>
+				<action id="1" name="process data" finish="true" auto="true">
+					<pre-functions>
+				<function type="class">
+					<arg name="class.name">packtpub.osw.ClaimsWebServiceProvider</arg>
+					<arg name="url">http://localhost:8080/ws/unpaid</arg>
+					<arg name="username">${caller}</arg>
+				</function>
+				</pre-functions>
+					<results>
+						<unconditional-result old-status="Finished"
+							step="1" status="Created" />
+					</results>
+				</action>
+			</actions>
+		</step>
+	</steps>
+</workflow>

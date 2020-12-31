@@ -1,0 +1,3 @@
+<propertysets>
+    <propertyset name="jdbc" class="com.opensymphony.module.propertyset.memory.MemoryPropertySet"/>
+</propertysets>

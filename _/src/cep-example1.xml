@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.6//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+	<initial-actions>
+		<action id="100" name="Start Workflow">
+			<results>
+				<unconditional-result old-status="Finished"
+					status="Underway" step="1" />
+			</results>
+				<post-functions>
+				<function type="class">
+					<arg name="class.name">
+						packtpub.osw.cep.PushEventFunctionProvider
+					</arg>
+					<arg name="event.class.name">
+						packtpub.osw.cep.ex1.ProcessCreationEvent
+					</arg>
+				</function>
+			</post-functions>
+		</action>
+	</initial-actions>
+	<steps>
+		<step id="1" name="Sending event">
+			<actions>
+				<action id="1" name="Finish First Draft">
+					<results>
+						<unconditional-result old-status="Finished"
+							step="2" status="Underway">
+							<post-functions>
+								<function type="class">
+									<arg name="class.name">
+										packtpub.osw.cep.PushEventFunctionProvider
+									</arg>
+									<arg name="event.class.name">
+										packtpub.osw.cep.ex1.ProcessFailureEvent
+									</arg>
+								</function>
+							</post-functions>
+						</unconditional-result>
+					</results>
+				</action>
+			</actions>
+		</step>
+		<step id="2" name="Edit Doc">
+		<post-functions>
+				<function type="class">
+					<arg name="class.name">
+						packtpub.osw.cep.PushEventFunctionProvider
+					</arg>
+					<arg name="event.class.name">
+						packtpub.osw.cep.ex1.ProcessCompletionEvent
+					</arg>
+				</function>
+			</post-functions>
+		</step>
+	</steps>
+</workflow>
+

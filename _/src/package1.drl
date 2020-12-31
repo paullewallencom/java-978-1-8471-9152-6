@@ -1,0 +1,7 @@
+package SistersRules; 
+rule "Cheddar Cheese"
+    when
+        k : packtpub.osw.Cheese( type == "cheddar" );
+    then
+        System.out.println( "cheddar" );     
+end
